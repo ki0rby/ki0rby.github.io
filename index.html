@@ -1,85 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ki0rby.github.io Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:700');
+    body {
+      margin: 0px;
+      font-family: 'Roboto';
+      text-align: center;
+      background: #f9f9f9;
+    }
+    .nav-table {
+      margin: 100px auto 0;
+      border-collapse: collapse;
+    }
+    .nav-table td {
+      padding: 20px;
+    }
+    .nav-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: #265ebf;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      box-shadow: 0 4px 16px 0 rgba(38,94,191,0.08);
+      letter-spacing: 2px;
+    }
+    .nav-btn:hover {
+      background: #003e9f;
+      color: #fff;
+    }
+    h1 {
+      color: #222;
+      margin-top: 60px;
+    }
+  </style>
+</head>
 <body>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Roboto:700');
-
-body {
-  margin:0px;
-  font-family:'Roboto';
-  text-align:center;
-}
-
-#container {
-  color:#999;
-  text-transform: uppercase;
-  font-size:36px;
-  font-weight:bold;
-  padding-top:200px;  
-  position:fixed;
-  width:100%;
-  bottom:45%;
-  display:block;
-}
-
-#flip {
-  height:50px;
-  overflow:hidden;
-}
-
-#flip > div > div {
-  color:#fff;
-  padding:4px 12px;
-  height:45px;
-  margin-bottom:45px;
-  display:inline-block;
-}
-
-#flip div:first-child {
-  animation: show 5s linear infinite;
-}
-
-#flip div div {
-  background:#42c58a;
-}
-#flip div:first-child div {
-  background:#4ec7f3;
-}
-#flip div:last-child div {
-  background:#DC143C;
-}
-
-@keyframes show {
-  0% {margin-top:-270px;}
-  5% {margin-top:-180px;}
-  33% {margin-top:-180px;}
-  38% {margin-top:-90px;}
-  66% {margin-top:-90px;}
-  71% {margin-top:0px;}
-  99.99% {margin-top:0px;}
-  100% {margin-top:-270px;}
-}
-
-p {
-  position:fixed;
-  width:100%;
-  bottom:30px;
-  font-size:12px;
-  color:#999;
-  margin-top:200px;
-}
-</style>
-<div id=container>
-  Wow 
-  <div id=flip>
-    <div><div>1</div></div>
-    <div><div>2</div></div>
-    <div><div>3</div></div>
-  </div>
-  Woo
-</div>
-
+  <h1>Welcome to ki0rby.github.io</h1>
+  <table class="nav-table" border="0">
+    <tr>
+      <td>
+        <a class="nav-btn" href="hall.html">Hall</a>
+      </td>
+      <td>
+        <a class="nav-btn" href="christ.html">Christ</a>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>
