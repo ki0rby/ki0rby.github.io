@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gunko Dance</title>
+  <title>Gunko Dancing</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -15,398 +15,39 @@
       place-items: center;
       overflow: hidden;
       background: #f8f9ff;
-      font-family: Arial, sans-serif;
     }
 
-    .stage {
-      position: relative;
-      width: 320px;
-      height: 560px;
-    }
-
-    .gunko {
-      position: absolute;
-      left: 50%;
-      bottom: 12px;
-      width: 260px;
-      height: 530px;
-      transform: translateX(-50%);
-      transform-origin: 50% 85%;
+    .dancer {
+      width: min(75vw, 360px);
+      height: auto;
+      transform-origin: 50% 90%;
       animation: dance 700ms ease-in-out infinite alternate;
-    }
-
-    .shadow {
-      position: absolute;
-      bottom: 8px;
-      left: 82px;
-      width: 156px;
-      height: 20px;
-      border-radius: 50%;
-      background: #35405d;
-      opacity: .22;
-      animation: shadow 700ms ease-in-out infinite alternate;
-    }
-
-    /* Hat and tricorn */
-    .hat {
-      position: absolute;
-      z-index: 12;
-      left: 69px;
-      top: 18px;
-      width: 122px;
-      height: 71px;
-      border: 4px solid #171821;
-      border-radius: 65% 65% 24% 24%;
-      background: #2d2b49;
-    }
-
-    .hat::before,
-    .hat::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      bottom: -16px;
-      width: 50px;
-      height: 25px;
-      border: 4px solid #171821;
-      border-radius: 50%;
-      background: #343052;
-    }
-
-    .hat::before { left: -24px; transform: rotate(14deg); }
-    .hat::after { right: -24px; transform: rotate(-14deg); }
-
-    .hat-brim {
-      position: absolute;
-      z-index: 13;
-      left: 64px;
-      top: 62px;
-      width: 132px;
-      height: 23px;
-      border: 4px solid #171821;
-      border-radius: 50%;
-      background: #36344f;
-    }
-
-    /* Hair and face */
-    .hair {
-      position: absolute;
-      z-index: 10;
-      left: 79px;
-      top: 58px;
-      width: 102px;
-      height: 62px;
-      border: 4px solid #171821;
-      border-radius: 45%;
-      background: #f5f1df;
-    }
-
-    .hair-lock {
-      position: absolute;
-      z-index: 11;
-      top: 70px;
-      width: 18px;
-      height: 57px;
-      border: 3px solid #171821;
-      border-radius: 50%;
-      background: #f7f3df;
-    }
-
-    .hair-lock.left { left: 72px; transform: rotate(-12deg); }
-    .hair-lock.right { left: 170px; transform: rotate(12deg); }
-
-    .face {
-      position: absolute;
-      z-index: 14;
-      left: 98px;
-      top: 75px;
-      width: 64px;
-      height: 70px;
-      border: 4px solid #171821;
-      border-radius: 42%;
-      background: #bde3ee;
-    }
-
-    .goggle {
-      position: absolute;
-      z-index: 16;
-      top: 79px;
-      width: 27px;
-      height: 27px;
-      border: 5px solid #171821;
-      border-radius: 50%;
-      background: #fff9d8;
-    }
-
-    .goggle.left { left: 91px; }
-    .goggle.right { left: 142px; }
-
-    .goggle::after {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 7px;
-      width: 5px;
-      height: 5px;
-      border: 2px solid #171821;
-      border-radius: 50%;
-      background: #87a9c3;
-    }
-
-    .goggle-link {
-      position: absolute;
-      z-index: 15;
-      left: 118px;
-      top: 90px;
-      width: 24px;
-      height: 7px;
-      border-top: 4px solid #171821;
-    }
-
-    .nose {
-      position: absolute;
-      z-index: 16;
-      left: 125px;
-      top: 106px;
-      width: 12px;
-      height: 12px;
-      border-right: 3px solid #171821;
-      border-bottom: 3px solid #171821;
-      transform: rotate(45deg);
-    }
-
-    .mouth {
-      position: absolute;
-      z-index: 16;
-      left: 125px;
-      top: 126px;
-      width: 15px;
-      height: 7px;
-      border-bottom: 3px solid #171821;
-      border-radius: 50%;
-    }
-
-    /* Torso */
-    .body {
-      position: absolute;
-      z-index: 8;
-      left: 78px;
-      top: 145px;
-      width: 104px;
-      height: 170px;
-      border: 4px solid #171821;
-      border-radius: 25px 25px 5px 5px;
-      background:
-        radial-gradient(circle at 32% 33px, #dfad29 0 5px, #171821 6px 8px, transparent 9px),
-        radial-gradient(circle at 68% 33px, #dfad29 0 5px, #171821 6px 8px, transparent 9px),
-        radial-gradient(circle at 32% 72px, #dfad29 0 5px, #171821 6px 8px, transparent 9px),
-        radial-gradient(circle at 68% 72px, #dfad29 0 5px, #171821 6px 8px, transparent 9px),
-        radial-gradient(circle at 32% 112px, #dfad29 0 5px, #171821 6px 8px, transparent 9px),
-        linear-gradient(90deg, #34405b 0 24%, #25304c 24% 76%, #34405b 76%);
-    }
-
-    .collar {
-      position: absolute;
-      z-index: 11;
-      left: 74px;
-      top: 138px;
-      width: 112px;
-      height: 38px;
-      border: 4px solid #171821;
-      border-radius: 50%;
-      background: #2a304c;
-    }
-
-    .cape-inner {
-      position: absolute;
-      z-index: 7;
-      left: 25px;
-      top: 144px;
-      width: 210px;
-      height: 275px;
-      clip-path: polygon(28% 0, 72% 0, 67% 88%, 100% 100%, 0 100%, 33% 88%);
-      background: #ef8b96;
-      border: 4px solid #171821;
-    }
-
-    .cape-pink {
-      position: absolute;
-      z-index: 9;
-      top: 154px;
-      width: 68px;
-      height: 215px;
-      border: 4px solid #171821;
-      background: #ef8b96;
-    }
-
-    .cape-pink.left {
-      left: 18px;
-      border-radius: 70% 20% 50% 50%;
-      transform: rotate(5deg);
-    }
-
-    .cape-pink.right {
-      right: 18px;
-      border-radius: 20% 70% 50% 50%;
-      transform: rotate(-5deg);
-    }
-
-    .cape-red {
-      position: absolute;
-      z-index: 6;
-      left: 46px;
-      top: 168px;
-      width: 168px;
-      height: 280px;
-      clip-path: polygon(10% 0, 90% 0, 100% 95%, 81% 100%, 50% 92%, 19% 100%, 0 95%);
-      background: #d83b4d;
-      border: 4px solid #171821;
-    }
-
-    .cape-top {
-      position: absolute;
-      z-index: 10;
-      left: 45px;
-      top: 126px;
-      width: 170px;
-      height: 58px;
-      clip-path: polygon(0 72%, 44% 45%, 50% 100%, 56% 45%, 100% 72%, 92% 100%, 8% 100%);
-      background: #ef8b96;
-      border: 4px solid #171821;
-    }
-
-    /* Legs */
-    .shorts {
-      position: absolute;
-      z-index: 9;
-      left: 80px;
-      top: 300px;
-      width: 100px;
-      height: 55px;
-      border: 4px solid #171821;
-      border-radius: 0 0 18px 18px;
-      background: #bdaf9f;
-    }
-
-    .leg {
-      position: absolute;
-      z-index: 8;
-      left: 84px;
-      top: 337px;
-      width: 39px;
-      height: 115px;
-      border: 4px solid #171821;
-      background: repeating-linear-gradient(
-        0deg,
-        #f7f1df 0 18px,
-        #6b7190 18px 24px
-      );
-      transform-origin: 50% 0;
-      animation: left-leg 700ms ease-in-out infinite alternate;
-    }
-
-    .leg.right {
-      left: 137px;
-      animation-name: right-leg;
-    }
-
-    /* Boots */
-    .boot {
-      position: absolute;
-      z-index: 11;
-      left: 78px;
-      top: 428px;
-      width: 55px;
-      height: 82px;
-      border: 4px solid #171821;
-      border-radius: 10px 10px 25px 25px;
-      background: #282a4a;
-      transform-origin: 50% 0;
-      animation: left-leg 700ms ease-in-out infinite alternate;
-    }
-
-    .boot.right {
-      left: 127px;
-      animation-name: right-leg;
-    }
-
-    .boot::after {
-      content: "";
-      position: absolute;
-      left: -12px;
-      bottom: -5px;
-      width: 68px;
-      height: 20px;
-      border: 4px solid #171821;
-      border-radius: 12px;
-      background: #353658;
+      filter: drop-shadow(0 18px 10px rgba(40, 42, 74, 0.18));
+      user-select: none;
     }
 
     @keyframes dance {
-      from { transform: translateX(-50%) translateY(3px) rotate(-3deg); }
-      to { transform: translateX(-50%) translateY(-7px) rotate(3deg); }
-    }
-
-    @keyframes left-leg {
-      from { transform: rotate(-5deg); }
-      to { transform: rotate(5deg); }
-    }
-
-    @keyframes right-leg {
-      from { transform: rotate(5deg); }
-      to { transform: rotate(-5deg); }
-    }
-
-    @keyframes shadow {
-      from { transform: scaleX(.85); opacity: .15; }
-      to { transform: scaleX(1.05); opacity: .25; }
+      from {
+        transform: translateY(8px) translateX(-8px) rotate(-4deg);
+      }
+      to {
+        transform: translateY(-8px) translateX(8px) rotate(4deg);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-      }
+      .dancer { animation: none; }
     }
   </style>
 </head>
 <body>
-  <main class="stage"
-        role="img"
-        aria-label="A CSS illustration of Gunko dancing">
-    <div class="shadow"></div>
-
-    <div class="gunko">
-      <div class="hat"></div>
-      <div class="hat-brim"></div>
-
-      <div class="hair"></div>
-      <div class="hair-lock left"></div>
-      <div class="hair-lock right"></div>
-
-      <div class="face"></div>
-      <div class="goggle left"></div>
-      <div class="goggle right"></div>
-      <div class="goggle-link"></div>
-      <div class="nose"></div>
-      <div class="mouth"></div>
-
-      <div class="cape-red"></div>
-      <div class="cape-inner"></div>
-      <div class="cape-pink left"></div>
-      <div class="cape-pink right"></div>
-      <div class="cape-top"></div>
-
-      <div class="collar"></div>
-      <div class="body"></div>
-      <div class="shorts"></div>
-
-      <div class="leg"></div>
-      <div class="leg right"></div>
-      <div class="boot"></div>
-      <div class="boot right"></div>
-    </div>
+  <main>
+    <img
+      class="dancer"
+      src="gunko1.jpg"
+      alt="Gunko from One Piece"
+    >
   </main>
 </body>
 </html>
 ```
-</html>
